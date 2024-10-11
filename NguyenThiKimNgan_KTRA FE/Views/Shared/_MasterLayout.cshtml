@@ -1,0 +1,45 @@
+﻿
+    </style>
+</head>
+<body>
+    <div id="TrangChu">
+        <header>
+            <div id="container">
+                <div class="left">
+                    <div class="logo">
+                        <img src="~/Content/image/tiki.jpg" width="50 />
+                    </div>
+                    <div class="header_d">Tốt và Nhanh</div>
+                </div>
+
+                <div class="center">
+                    <form name="TimKiem" method="post" class="search-container">
+                        <input type="text" id="iFind" value="Giao hàng 2H & đúng khung giờ" />
+                        <button type="submit">Tìm kiếm</button>
+                    </form>
+                    <div class="header_d">Khỏe đẹp, nhà cửa, sách, thể thao, trái cây, thịt, trứng, rau củ quả, sữa, bơ, phô mai, hải sản, gạo, mì ăn liền</div>
+                </div>
+
+                <div class="right">
+                    <nav>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-home"></i> Trang chủ</a></li>
+                            <li><a href="#"><i class="fas fa-chess-queen"></i> Astra</a></li>
+                            <li><a href="#"><i class="far fa-smile"></i> Tài khoản</a></li>
+                            <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </nav>
+                    <div class="header_d">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Giao đến:</span>
+                        <span class="address">Q12, P.Hiệp Thành, Hồ Chí Minh</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

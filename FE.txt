@@ -1,0 +1,5 @@
+﻿Build started at 10:28 PM...
+1>------ Build started: Project: NguyenThiKimNgan_KTRA FE, Configuration: Debug Any CPU ------
+1>  NguyenThiKimNgan_KTRA FE -> C:\Users\nvo\source\repos\NguyenThiKimNgan_KTRA FE\NguyenThiKimNgan_KTRA FE\bin\NguyenThiKimNgan_KTRA FE.dll
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+========== Build completed at 10:28 PM and took 00.422 seconds ==========

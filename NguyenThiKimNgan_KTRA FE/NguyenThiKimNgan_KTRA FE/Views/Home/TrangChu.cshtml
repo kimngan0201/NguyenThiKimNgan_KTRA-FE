@@ -1,0 +1,341 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: white;
+            color: gray;
+            padding: 10px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .section-left {
+            width: 70%;
+            margin-bottom: 20px;
+        }
+
+        .summary-section {
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .product {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+            .product img {
+                width: 100px;
+            }
+
+        .product-details {
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: red;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+        }
+
+            .quantity input {
+                width: 50px;
+                text-align: center;
+            }
+
+        .checkout-btn {
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            .checkout-btn:hover {
+                background-color: darkred;
+            }
+
+        .product-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+            .product-row input[type="checkbox"] {
+                margin-right: 10px;
+            }
+
+        .price, .quantity, .total, .fas {
+            text-align: center;
+            margin-left: 20px;
+        }
+
+        .select-all {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+            .select-all input[type="checkbox"] {
+                margin-right: 10px;
+            }
+
+            .select-all label {
+                margin-right: auto;
+            }
+
+        .shop-name {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .discount {
+            color: green;
+        }
+
+        .shop-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Styles for the right section */
+        .right-section {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .promo-account, .discount-section, .summary-section {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            flex: 1; /* Thay đổi chiều cao các khung bằng nhau */
+        }
+
+        .promo-account {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .promo-account .info-icon, .discount-section .info-icon {
+                cursor: pointer;
+            }
+
+        .discount-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .discount-section img {
+                margin-right: 10px;
+            }
+
+            .discount-section .apply-btn {
+                padding: 5px 10px;
+                background-color: #007bff; /* Màu xanh dương */
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 3px; /* Thêm bo tròn cho nút */
+            }
+
+                .discount-section .apply-btn:hover {
+                    background-color: #0056b3; /* Màu khi hover */
+                }
+    </style>
+</head>
+<body>
+
+    <div class="header">Giỏ hàng</div>
+
+    <div class="container">
+        <div class="section-left">
+            <h2>Giỏ Hàng</h2>
+
+            <!-- Thanh tiến độ -->
+            <div class="progress-container">
+                <div class="progress-header">
+                    <h3 style="margin: 0;"></h3>
+                </div>
+                <div class="progress-bar" style="position: relative; width: 100%; height: 20px; background-color: #e0e0e0; border-radius: 10px;">
+                    <div class="progress-fill" style="position: absolute; height: 100%; background-color: green; border-radius: 10px; width: 100%;"></div>
+                    <span style="position: absolute; left: 50%; margin-top:5px; color: black;">149K</span>
+                    <span style="position: absolute; right: 0%; margin-top: 5px; color: black;">299K</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                    <span style="color: gray;">Mua</span>
+                    <span style="color: green;">FreeShip 30K</span>
+                </div>
+            </div>
+
+            <div class="select-all">
+                <input type="checkbox" id="select-all">
+                <label for="select-all">Chọn tất cả</label>
+                <div class="price">Đơn giá</div>
+                <div class="quantity">Số lượng</div>
+                <div class="total">Thành tiền</div>
+                <i class="fas fa-trash"></i>
+            </div>
+
+            <div class="product-row">
+                <div class="shop-container">
+                    <input type="checkbox" class="product-checkbox" data-price="8480000">
+                    <span class="shop-name">GIA DỤNG VIỆT</span>
+                </div>
+                <div class="product">
+                    <img src="~/Controllers/img/DienThoai.jpg" alt="Samsung Galaxy A54 5G" />
+                    <div class="product-details">
+                        <h4>Điện thoại Samsung Galaxy A54 5G (8GB/128GB) - Hàng chính hãng - Tím</h4>
+                    </div>
+                    <div class="quantity">
+                        <button>-</button>
+                        <input type="number" value="1" min="1" class="quantity-input">
+                        <button>+</button>
+                    </div>
+                    <div class="product-price">8.480.000₫</div>
+                </div>
+                <i class="fas fa-trash"></i>
+            </div>
+
+            <div class="product-row">
+                <div class="shop-container">
+                    <input type="checkbox" class="product-checkbox" data-price="8990000">
+                    <span class="shop-name">Tiki Trading</span>
+                </div>
+                <div class="product">
+                    <img src="~/Controllers/img/DienThoai.jpg" alt="Samsung Galaxy A54 5G" />
+                    <div class="product-details">
+                        <h4>Điện thoại Samsung Galaxy A54 5G (8GB/256GB) - Hàng chính hãng - Tím</h4>
+                        <span class="discount">(Giảm 4%)</span>
+                    </div>
+                    <div class="quantity">
+                        <button>-</button>
+                        <input type="number" value="1" min="1" class="quantity-input">
+                        <button>+</button>
+                    </div>
+                    <div class="product-price">8.990.000₫</div>
+                </div>
+                <i class="fas fa-trash"></i>
+            </div>
+        </div>
+
+        <!-- Khối bên phải -->
+        <div class="right-section">
+            <!-- Khung Tài Khoản Khuyến Mãi -->
+            <div class="promo-account">
+                <span>Tài Khoản Khuyến Mãi</span>
+                <span style="color: gray;">Có thể chọn 2</span>
+                <i class="fas fa-info-circle"></i>
+            </div>
+
+            <!-- Khung Giảm Giá -->
+            <div class="discount-section">
+                <img src="~/Controllers/img/zalo.png" alt="Zalo Pay" style="width: 30px; margin-right: 10px;" />
+                <span>Giảm 50k</span>
+                <i class="fas fa-info-circle"></i>
+                <button class="apply-btn">Áp Dụng</button>
+            </div>
+
+            <!-- Khung tính tiền -->
+            <div class="summary-section">
+                <h2>Tính Tiền</h2>
+                <div class="temporary-price">
+                    Tạm tính: <strong class="temporary-price-value">0₫</strong>
+                </div>
+
+                <div class="discount-section">
+                    <div>Tổng tiền:</div>
+                    <div class="total-price" style="font-size: 24px; font-weight: bold; color: red;">0₫</div>
+                </div>
+
+                <div class="shipping-info" style="color: #0d6efd;">FREESHIP <span style="color: gray;">(Đã được áp dụng!)</span></div>
+                <button class="checkout-btn">Thanh Toán</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updatePrices() {
+            let totalPrice = 0;
+            let temporaryPrice = 0;
+
+            document.querySelectorAll('.product-row').forEach(function (productRow) {
+                const checkbox = productRow.querySelector('.product-checkbox');
+                if (checkbox.checked) {
+                    const price = parseInt(checkbox.getAttribute('data-price'));
+                    const quantity = parseInt(productRow.querySelector('.quantity-input').value);
+                    const itemTotal = price * quantity;
+
+                    // Cập nhật tạm tính
+                    temporaryPrice += itemTotal;
+                }
+            });
+
+            // Cập nhật tổng tiền
+            totalPrice = temporaryPrice; // Tổng tiền hiện tại bằng tạm tính
+            document.querySelector('.temporary-price-value').textContent = temporaryPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+            document.querySelector('.total-price').textContent = totalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+        }
+
+        document.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
+            checkbox.addEventListener('change', updatePrices);
+        });
+
+        document.querySelectorAll('.quantity-input').forEach(function (input) {
+            input.addEventListener('input', updatePrices);
+        });
+
+        document.getElementById('select-all').addEventListener('change', function () {
+            const isChecked = this.checked;
+            document.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
+                checkbox.checked = isChecked;
+            });
+            updatePrices();
+        });
+    </script>
+
+</body>
+</html>
